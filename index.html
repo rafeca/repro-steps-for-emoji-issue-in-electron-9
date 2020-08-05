@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <title>Hello World!</title>
+
+    <style type="text/css">
+      .emoji-with-system-font {
+        font-family: system-ui;
+      }
+    </style>
+    <script type="text/javascript">
+      function addEmoji(systemFont) {
+        const elem = document.createElement("div");
+        if (systemFont) {
+          elem.classList.add("emoji-with-system-font");
+        }
+        elem.innerHTML = "💻🖥🟧🟥🟨🟩🟦🟪⬛️";
+        document.body.appendChild(elem);
+      }
+      addText();
+    </script>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-
-    <!-- You can also require other files to run in this process -->
+    <p><button onClick="addEmoji(true)">Add emoji with system font</button></p>
+    <p>
+      <button onClick="addEmoji(false)">Add emoji without system font</button>
+    </p>
     <script src="./renderer.js"></script>
   </body>
 </html>
